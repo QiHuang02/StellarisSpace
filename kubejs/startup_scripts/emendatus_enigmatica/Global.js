@@ -1,6 +1,15 @@
 // priority: 199
 
 global.modid = 'emendatusenigmatica';
+Platform.setModName(`${global.modid}`, 'Emendatus Enigmatica');
+
+const hadRegistriedItems = [];
+const OreItems = [];
+const RawItems = [];
+const CommonItems = [];
+const MekItems = [];
+const BloodItems = [];
+const CrushItems = [];
 
 const assetspath = `./kubejs/assets/${global.modid}`;
 const datapath = `./kubejs/data/${global.modid}`;
@@ -21,30 +30,11 @@ const paths = {
     }
 };
 
-const OreModelJson = (base, overlay) => ({
-    loader: 'neoforge:composite',
-    parent: 'block/block',
-    ambientocclusion: false,
-    textures: {
-        particle: base
-    },
-    children: {
-        solid: {
-            parent: 'block/cube_all',
-            render_type: 'minecraft:solid',
-            textures: {
-                all: base,
-            },
-        },
-        translucent: {
-            parent: 'block/cube_all',
-            render_type: 'minecraft:translucent',
-            textures: {
-                all: overlay,
-            },
-        },
-    },
-});
+const addToArray = (itemid) => {
+    if (!hadRegistriedItems.includes(itemid)) {
+        hadRegistriedItems.push(itemid)
+    }
+};
 
 const OreLootJson = (block, item, sequence, min, max) => ({
     "type": "minecraft:block",
@@ -108,20 +98,6 @@ const OreLootJson = (block, item, sequence, min, max) => ({
     "random_sequence": sequence
 });
 
-function createModelOre(name, strata) {
-    let model = JsonIO.read(`${paths.models.block}${name}_ore_${strata}.json`) || {};
-    if (model.parent === undefined) {
-        console.log(`No block model found, creating new: ${name}_ore_${strata}.json`);
-        JsonIO.write(
-            `${paths.models.block}${name}_ore_${strata}.json`,
-            OreModelJson(
-                global.EE_STRATAS[strata].texture,
-                `emendatusenigmatica:block/overlays/ore/${name}`
-            )
-        )
-    }
-};
-
 function createLootOre(name, strata, drop) {
     let loot = JsonIO.read(`${paths.loots.block}${name}_ore_${strata}.json`) || {};
     if (loot.type === undefined) {
@@ -140,5 +116,3 @@ function createLootOre(name, strata, drop) {
         )
     }
 };
-
-Platform.setModName(`${global.modid}`, 'Emendatus Enigmatica');

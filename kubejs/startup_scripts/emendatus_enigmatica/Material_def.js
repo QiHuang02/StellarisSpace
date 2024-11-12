@@ -11,7 +11,7 @@ global.EE_MATERIALS = [
     // Coal
     {
         name: 'coal',
-        type: 'dust',
+        type: 'special',
         processedTypes: ['dust'],
         color: ['#393e46', '#2e2e2e', '#261e24', '#1f1721', '#1c1c1e'],
         burnTime: 1600
@@ -280,25 +280,43 @@ global.EE_MATERIALS = [
             max: 4
         }
     },
+    // Ruby
+    {
+        name: 'ruby',
+        type: 'gem',
+        baseItem: 'gem',
+        processedTypes: ['gem', 'dust', 'gear', 'plate', 'rod', 'storage_block'],
+        color: ['#fcd1cc', '#fb7b71', '#e93e43', '#c41735', '#780526'],
+        gemTemplate: 1
+    },
+    // Sapphire
+    {
+        name: 'sapphire',
+        type: 'gem',
+        baseItem: 'gem',
+        processedTypes: ['gem', 'dust', 'gear', 'plate', 'rod', 'storage_block'],
+        color: ['#fcfcfc', '#bde5fc', '#76c6fc', '#246be9', '#121d73'],
+        gemTemplate: 3
+    },
     // Misc
     // Wood
     {
         name: 'wood',
-        type: 'misc',
+        type: 'special',
         processedTypes: ['dust', 'storage_block'],
         color: ['#b8945f', '#987849', '#745a36', '#5f4a2b', '#4c3d26']
     },
     // Ender Pearl
     {
         name: 'ender_pearl',
-        type: 'misc',
+        type: 'special',
         processedTypes: ['dust', 'storage_block'],
         color: ['#8cf4e2', '#349988', '#0c3730', '#0b4d42', '#063931']
     },
     // Coal Coke
     {
         name: 'coal_coke',
-        type: 'misc',
+        type: 'special',
         processedTypes: ['gem', 'dust', 'storage_block'],
         color: ['#819da6', '#2e4049', '#1c1c1e', '#252525', '#1a2a36'],
         burnTime: 3200
@@ -454,13 +472,7 @@ global.EE_MATERIALS = [
     //         min: 1,
     //         max: 1
     //     }
-    // },
-    {
-        name: 'infinity',
-        type: 'metal',
-        processedTypes: ['ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block'],
-        harvestLevel: 'end_stone',
-    }
+    // }
 ];
 
 global.EE_MATERIALS.forEach(

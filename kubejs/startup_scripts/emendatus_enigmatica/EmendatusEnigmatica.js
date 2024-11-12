@@ -29,37 +29,130 @@ EmendatusEnigmaticaJS.prototype = {
         let gemTemplate = this.gemTemplate;
         let drop = this.drop;
 
-        processedTypes.forEach((ptypes) => {
-            switch (ptypes) {
-                case 'ore':
-                    registryOre(name, strata, harvestLevel, color, type, drop);
-                    break;
-                case 'raw':
-                    registryRaw(name, color);
-                    break;
-                case 'storage_block':
-                    registrySBlock(name, type, ptypes, burnTime, color);
-                    break;
-                case 'ingot':
-                case 'gem':
-                case 'dust':
-                case 'gear':
-                case 'nugget':
-                case 'plate':
-                case 'rod':
-                    registryItem(ptypes, name, color, burnTime, gemTemplate);
-                    break;
-                case 'mekanism':
-                    registryMek(name, color);
-                    break;
-                case 'bloodmagic':
-                    registryBlood(name, color);
-                    break;
-                case 'crush':
-                    registryCrush(name, color);
-                    break;
-            }
-        })
+        switch (type) {
+            case 'metal':
+                processedTypes.forEach((ptypes) => {
+                    switch (ptypes) {
+                        case 'ore':
+                            registryOre(name, strata, harvestLevel, color, type, drop);
+                            break;
+                        case 'raw':
+                            registryRaw(name, color);
+                            break;
+                        case 'storage_block':
+                            registrySBlock(name, type, burnTime, color);
+                            break;
+                        case 'ingot':
+                        case 'dust':
+                        case 'gear':
+                        case 'nugget':
+                        case 'plate':
+                        case 'rod':
+                            registryItem(ptypes, name, color, burnTime, gemTemplate);
+                            break;
+                        case 'mekanism':
+                            registryMek(name, color);
+                            break;
+                        case 'bloodmagic':
+                            registryBloodMagic(name, color);
+                            break;
+                        case 'crush':
+                            registryCrush(name, color);
+                            break;
+                    }
+                });
+                break;
+            case 'gem':
+                processedTypes.forEach((ptypes) => {
+                    switch (ptypes) {
+                        case 'ore':
+                            registryOre(name, strata, harvestLevel, color, type, drop);
+                            break;
+                        case 'raw':
+                            registryRaw(name, color);
+                            break;
+                        case 'storage_block':
+                            registrySBlock(name, type, burnTime, color);
+                            break;
+                        case 'gem':
+                        case 'dust':
+                        case 'gear':
+                        case 'plate':
+                        case 'rod':
+                            registryItem(ptypes, name, color, burnTime, gemTemplate);
+                            break;
+                        case 'mekanism':
+                            registryMek(name, color);
+                            break;
+                        case 'bloodmagic':
+                            registryBloodMagic(name, color);
+                            break;
+                        case 'crush':
+                            registryCrush(name, color);
+                            break;
+                    }
+                });
+                break;
+            case 'alloy':
+                processedTypes.forEach((ptypes) => {
+                    switch (ptypes) {
+                        case 'storage_block':
+                            registrySBlock(name, type, burnTime, color);
+                            break;
+                        case 'ingot':
+                        case 'dust':
+                        case 'gear':
+                        case 'nugget':
+                        case 'plate':
+                        case 'rod':
+                            registryItem(ptypes, name, color, burnTime, gemTemplate);
+                            break;
+                        case 'mekanism':
+                            registryMek(name, color);
+                            break;
+                        case 'bloodmagic':
+                            registryBloodMagic(name, color);
+                            break;
+                        case 'crush':
+                            registryCrush(name, color);
+                            break;
+                    }
+                });
+                break;
+            case 'special':
+                processedTypes.forEach((ptypes) => {
+                    switch (ptypes) {
+                        case 'ore':
+                            registryOre(name, strata, harvestLevel, color, type, drop);
+                            break;
+                        case 'raw':
+                            registryRaw(name, color);
+                            break;
+                        case 'storage_block':
+                            registrySBlock(name, type, burnTime, color);
+                            break;
+                        case 'ingot':
+                        case 'gem':
+                        case 'dust':
+                        case 'gear':
+                        case 'nugget':
+                        case 'plate':
+                        case 'rod':
+                            registryItem(ptypes, name, color, burnTime, gemTemplate);
+                            break;
+                        case 'mekanism':
+                            registryMek(name, color);
+                            break;
+                        case 'bloodmagic':
+                            registryBloodMagic(name, color);
+                            break;
+                        case 'crush':
+                            registryCrush(name, color);
+                            break;
+                    }
+                });
+                break;
+        }
     }
 };
 
@@ -137,10 +230,9 @@ function registryOre(name, strata, harvestLevel, color, type, drop) {
                 .tagBlock(`minecraft:mineable/${global.EE_STRATAS[s].tool}`)
                 .tagBlock(`c:mineable/paxel`)
                 .tagBlock(`minecraft:needs_${harvestLevel}_tool`)
-
-            createLootOre(name, s, drop);
-        })
-    })
+        });
+        createLootOre(name, s, drop);
+    });
 }
 
 /**
@@ -150,7 +242,7 @@ function registryOre(name, strata, harvestLevel, color, type, drop) {
  */
 function registryRaw(name, color) {
     StartupEvents.registry('item', (event) => {
-        let builder = event.create(`emendatusenigmatica:raw_${name}`)
+        let builder = event.create(`${global.modid}:raw_${name}`)
             .tag('c:raw_materials')
             .tag(`c:raw_materials/${name}`)
 
@@ -228,13 +320,13 @@ function registryRaw(name, color) {
  * @param {*} burnTime
  * @param {*} color
  */
-function registrySBlock(name, type, ptypes, burnTime, color) {
+function registrySBlock(name, type, burnTime, color) {
     StartupEvents.registry('block', (event) => {
         let builder = event.create(`${global.modid}:${name}_block`);
 
         builder.modelGenerator((model) => {
             model.parent('minecraft:block/iron_block')
-            if (type === 'metal' | type === 'alloy') {
+            if (type === 'metal' | type === 'alloy' | type === 'special') {
                 model.texture(`layer0`, `${global.modid}:block/templates/block/metal/00`)
                 model.texture(`layer1`, `${global.modid}:block/templates/block/metal/01`)
                 model.texture(`layer2`, `${global.modid}:block/templates/block/metal/02`)
@@ -299,7 +391,7 @@ function registrySBlock(name, type, ptypes, burnTime, color) {
             })
             builder.tagBoth('fuelgoeshere:forced_fuels')
         }
-    })
+    });
 }
 
 /**
@@ -308,6 +400,7 @@ function registrySBlock(name, type, ptypes, burnTime, color) {
  * @param {String} name Material's name.
  * @param {String[]} color Color array of materials. It can only have 5 colors, likes this: ['#393e46', '#2e2e2e', '#261e24', '#1f1721', '#1c1c1e']
  * @param {Number} burnTime The combustion value of the material.
+ * @param {gemTemplate} gemTemplate 
  */
 function registryItem(ptypes, name, color, burnTime, gemTemplate) {
     StartupEvents.registry('item', (event) => {
@@ -334,8 +427,7 @@ function registryItem(ptypes, name, color, burnTime, gemTemplate) {
                 }
             }
         }
-    }
-    );
+    });
 };
 
 
@@ -374,7 +466,7 @@ function registryMek(name, color) {
  * @param {*} name
  * @param {*} color
  */
-function registryBlood(name, color) {
+function registryBloodMagic(name, color) {
     StartupEvents.registry('item', (event) => {
         let fragment = event.create(`${global.modid}:${name}_fragment`).tag('bloodmagic:fragments').tag(`bloodmagic:fragments/${name}`);
         let gravel = event.create(`${global.modid}:${name}_gravel`).tag('bloodmagic:gravels').tag(`bloodmagic:gravels/${name}`);
@@ -387,7 +479,7 @@ function registryBlood(name, color) {
                     .color(i, color[i]);
             }
         }
-    })
+    });
 };
 
 
