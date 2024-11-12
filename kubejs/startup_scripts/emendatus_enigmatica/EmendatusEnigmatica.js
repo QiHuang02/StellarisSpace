@@ -19,140 +19,48 @@ function EmendatusEnigmaticaJS(config) {
 
 EmendatusEnigmaticaJS.prototype = {
     registry() {
-        let name = this.name;
-        let type = this.type;
-        let harvestLevel = this.harvestLevel;
-        let processedTypes = this.processedTypes;
-        let strata = this.strata;
-        let color = this.color;
-        let burnTime = this.burnTime;
-        let gemTemplate = this.gemTemplate;
-        let drop = this.drop;
+        let {
+            name,
+            type,
+            harvestLevel,
+            processedTypes,
+            strata,
+            color,
+            burnTime,
+            gemTemplate,
+            drop
+        } = this;
 
-        switch (type) {
-            case 'metal':
-                processedTypes.forEach((ptypes) => {
-                    switch (ptypes) {
-                        case 'ore':
-                            registryOre(name, strata, harvestLevel, color, type, drop);
-                            break;
-                        case 'raw':
-                            registryRaw(name, color);
-                            break;
-                        case 'storage_block':
-                            registrySBlock(name, type, burnTime, color);
-                            break;
-                        case 'ingot':
-                        case 'dust':
-                        case 'gear':
-                        case 'nugget':
-                        case 'plate':
-                        case 'rod':
-                            registryItem(ptypes, name, color, burnTime, gemTemplate);
-                            break;
-                        case 'mekanism':
-                            registryMek(name, color);
-                            break;
-                        case 'bloodmagic':
-                            registryBloodMagic(name, color);
-                            break;
-                        case 'crush':
-                            registryCrush(name, color);
-                            break;
-                    }
-                });
-                break;
-            case 'gem':
-                processedTypes.forEach((ptypes) => {
-                    switch (ptypes) {
-                        case 'ore':
-                            registryOre(name, strata, harvestLevel, color, type, drop);
-                            break;
-                        case 'raw':
-                            registryRaw(name, color);
-                            break;
-                        case 'storage_block':
-                            registrySBlock(name, type, burnTime, color);
-                            break;
-                        case 'gem':
-                        case 'dust':
-                        case 'gear':
-                        case 'plate':
-                        case 'rod':
-                            registryItem(ptypes, name, color, burnTime, gemTemplate);
-                            break;
-                        case 'mekanism':
-                            registryMek(name, color);
-                            break;
-                        case 'bloodmagic':
-                            registryBloodMagic(name, color);
-                            break;
-                        case 'crush':
-                            registryCrush(name, color);
-                            break;
-                    }
-                });
-                break;
-            case 'alloy':
-                processedTypes.forEach((ptypes) => {
-                    switch (ptypes) {
-                        case 'storage_block':
-                            registrySBlock(name, type, burnTime, color);
-                            break;
-                        case 'ingot':
-                        case 'dust':
-                        case 'gear':
-                        case 'nugget':
-                        case 'plate':
-                        case 'rod':
-                            registryItem(ptypes, name, color, burnTime, gemTemplate);
-                            break;
-                        case 'mekanism':
-                            registryMek(name, color);
-                            break;
-                        case 'bloodmagic':
-                            registryBloodMagic(name, color);
-                            break;
-                        case 'crush':
-                            registryCrush(name, color);
-                            break;
-                    }
-                });
-                break;
-            case 'special':
-                processedTypes.forEach((ptypes) => {
-                    switch (ptypes) {
-                        case 'ore':
-                            registryOre(name, strata, harvestLevel, color, type, drop);
-                            break;
-                        case 'raw':
-                            registryRaw(name, color);
-                            break;
-                        case 'storage_block':
-                            registrySBlock(name, type, burnTime, color);
-                            break;
-                        case 'ingot':
-                        case 'gem':
-                        case 'dust':
-                        case 'gear':
-                        case 'nugget':
-                        case 'plate':
-                        case 'rod':
-                            registryItem(ptypes, name, color, burnTime, gemTemplate);
-                            break;
-                        case 'mekanism':
-                            registryMek(name, color);
-                            break;
-                        case 'bloodmagic':
-                            registryBloodMagic(name, color);
-                            break;
-                        case 'crush':
-                            registryCrush(name, color);
-                            break;
-                    }
-                });
-                break;
-        }
+        // 定义一个映射对象，将每个 processedType 与相应的函数映射起来
+        let typeRegistryMap = {
+            ore: () => registryOre(name, strata, harvestLevel, color, type, drop),
+            raw: () => registryRaw(name, color),
+            storage_block: () => registrySBlock(name, type, burnTime, color),
+            mekanism: () => registryMek(name, color),
+            bloodmagic: () => registryBloodMagic(name, color),
+            crush: () => registryCrush(name, color)
+        };
+
+        // 处理默认类型
+        let defaultTypes = [
+            'ingot',
+            'dust',
+            'gear',
+            'nugget',
+            'plate',
+            'rod',
+            'gem'
+        ];
+
+        processedTypes.forEach((ptypes) => {
+            if (typeRegistryMap[ptypes]) {
+                // 如果映射对象中存在对应的处理方法，则直接调用
+                typeRegistryMap[ptypes]();
+            } else if (defaultTypes.includes(ptypes)) {
+                // 否则检查是否为默认类型，如果是则调用默认注册方法
+                registryItem(ptypes, name, color, burnTime, gemTemplate);
+            }
+        });
     }
 };
 
