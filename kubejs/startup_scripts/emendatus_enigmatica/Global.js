@@ -3,14 +3,6 @@
 global.modid = 'emendatusenigmatica';
 Platform.setModName(`${global.modid}`, 'Emendatus Enigmatica');
 
-const hadRegistriedItems = [];
-const OreItems = [];
-const RawItems = [];
-const CommonItems = [];
-const MekItems = [];
-const BloodItems = [];
-const CrushItems = [];
-
 const assetspath = `./kubejs/assets/${global.modid}`;
 const datapath = `./kubejs/data/${global.modid}`;
 
@@ -27,12 +19,6 @@ const paths = {
     },
     recipes: {
         recipe: `${datapath}/recipe/`
-    }
-};
-
-const addToArray = (itemid) => {
-    if (!hadRegistriedItems.includes(itemid)) {
-        hadRegistriedItems.push(itemid)
     }
 };
 

@@ -319,6 +319,12 @@ global.EE_MATERIALS = [
         type: 'special',
         processedTypes: ['gem', 'dust', 'storage_block'],
         color: ['#819da6', '#2e4049', '#1c1c1e', '#252525', '#1a2a36'],
+        texture: {
+            item: {
+                gem: 'item/coal_coke_gem',
+            },
+            block: 'block/coal_coke_block'
+        },
         burnTime: 3200
     },
     // Alloys
@@ -385,25 +391,6 @@ global.EE_MATERIALS = [
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#e4e6eb', '#9ea0a3', '#818185', '#454552', '#31313b']
     },
-    // Mod: Ad Astra
-    // {
-    //     name: 'desh',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#e6b85c', '#d38b4c', '#c57041', '#792f44', '#9c4438']
-    // },
-    // {
-    //     name: 'ostrum',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#bd7980', '#a66b72', '#76525f', '#41303c', '#543d4a']
-    // },
-    // {
-    //     name: 'calorite',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#dc6c5b', '#c94d4e', '#9c1f3e', '#691533', '#691533']
-    // },
     // Mod: Occultism
     // {
     //     name: 'iesnium',
@@ -430,49 +417,6 @@ global.EE_MATERIALS = [
     //     processedTypes: ['dust', 'plate', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
     //     color: ['#fcbe6c', '#fcab39', '#fc6d28', '#ae2d15', '#9c3100']
     // },
-    // Mod: Omniworld
-    // {
-    //     name: 'orichalcum',
-    //     type: 'metal',
-    //     processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic', 'mekanism', 'crushed'],
-    //     harvestLevel: 'stone',
-    //     strata: ['deepslate'],
-    //     // color: ['#effbea', '#bedb8b', '#a3bf68', '#5f7d31', '#44601c'],
-    //     smallStorageBlock: false,
-    //     drop: {
-    //         item: 'emendatusenigmatica:raw_orichalcum',
-    //         min: 1,
-    //         max: 1
-    //     }
-    // },
-    // {
-    //     name: 'mithril',
-    //     type: 'metal',
-    //     processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic', 'mekanism', 'crushed'],
-    //     harvestLevel: 'stone',
-    //     strata: ['netherrack'],
-    //     // color: ['#fefffb', '#c6ffdd', '#6bcdbb', '#316c89', '#264a66'],
-    //     smallStorageBlock: false,
-    //     drop: {
-    //         item: 'emendatusenigmatica:raw_mithril',
-    //         min: 1,
-    //         max: 1
-    //     }
-    // },
-    // {
-    //     name: 'adamantite',
-    //     type: 'metal',
-    //     processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic', 'mekanism', 'crushed'],
-    //     harvestLevel: 'stone',
-    //     strata: ['end_stone'],
-    //     // color: ['#fff7f7', '#ffc4d1', '#f2595c', '#b91e1e', '#9f181a'],
-    //     smallStorageBlock: false,
-    //     drop: {
-    //         item: 'emendatusenigmatica:raw_adamantite',
-    //         min: 1,
-    //         max: 1
-    //     }
-    // }
 ];
 
 global.EE_MATERIALS.forEach(

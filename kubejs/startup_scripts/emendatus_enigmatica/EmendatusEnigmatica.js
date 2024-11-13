@@ -75,73 +75,62 @@ EmendatusEnigmaticaJS.prototype = {
  * @param {String} drop
  */
 function registryOre(name, strata, harvestLevel, color, type, drop) {
+    let layerNames = ['layer0', 'layer1', 'layer2', 'layer3', 'layer4'];
+    let texturePaths = layerNames.map((layer, index) => `${global.modid}:block/templates/ore/${type}/0${index}`);
+
     strata.forEach((s) => {
         StartupEvents.registry('block', (event) => {
             let builder = event.create(`${global.modid}:${name}_ore_${s}`);
 
             builder.modelGenerator((model) => {
-                model.parent(`${global.EE_STRATAS[s].texture}`)
-                model.texture(`layer0`, `${global.modid}:block/templates/ore/${type}/00`)
-                model.texture(`layer1`, `${global.modid}:block/templates/ore/${type}/01`)
-                model.texture(`layer2`, `${global.modid}:block/templates/ore/${type}/02`)
-                model.texture(`layer3`, `${global.modid}:block/templates/ore/${type}/03`)
-                model.texture(`layer4`, `${global.modid}:block/templates/ore/${type}/04`)
-                model.texture(`${s}`, `${global.EE_STRATAS[s].texture}`)
+                model.parent(`${global.EE_STRATAS[s].texture}`);
+
+                model.texture(s, `${global.EE_STRATAS[s].texture}`);
+
+                layerNames.forEach((layer, index) => {
+                    model.texture(layer, texturePaths[index]);
+                });
+
                 model.element((element) => {
-                    element.allFaces((base) => {
-                        base.uv(0, 0, 16, 16).tex(`${s}`)
-                    })
+                    element.allFaces((face) => {
+                        face.uv(0, 0, 16, 16).tex(s);
+                    });
+                });
+
+                layerNames.forEach((layer, index) => {
+                    model.element((element) => {
+                        element.allFaces((face) => {
+                            face.uv(0, 0, 16, 16).tex(layer).tintindex(index);
+                        });
+                    });
                 })
-                model.element((element) => {
-                    element.allFaces((face_layer0) => {
-                        face_layer0.uv(0, 0, 16, 16).tex('layer0').tintindex(0)
-                    })
-                })
-                model.element((element) => {
-                    element.allFaces((face_layer1) => {
-                        face_layer1.uv(0, 0, 16, 16).tex('layer1').tintindex(1)
-                    })
-                })
-                model.element((element) => {
-                    element.allFaces((face_layer2) => {
-                        face_layer2.uv(0, 0, 16, 16).tex('layer2').tintindex(2)
-                    })
-                })
-                model.element((element) => {
-                    element.allFaces((face_layer3) => {
-                        face_layer3.uv(0, 0, 16, 16).tex('layer3').tintindex(3)
-                    })
-                })
-                model.element((element) => {
-                    element.allFaces((face_layer4) => {
-                        face_layer4.uv(0, 0, 16, 16).tex('layer4').tintindex(4)
-                    })
-                })
-            })
+                
+            });
 
             if (color) {
-                for (let i = 0; i < color.length; i++) {
-                    builder.color(i, color[i]);
-                    builder.item(item => {
-                        item.color(i, color[i])
-                    })
-                };
-            }
+                color.forEach((colorValue, index) => {
+                    builder.color(index, colorValue);
+                    builder.item((item) => {
+                        item.color(index, colorValue);
+                    });
+                });
+            };
 
-            builder.renderType("cutout")
-                .hardness(global.EE_STRATAS[s].resistance)
-                .soundType(SoundType.STONE)
-                .requiresTool(true)
-                .tagBoth('c:ores')
-                .tagBoth(`c:ores/${name}`)
-                .tagBoth(`c:ore_rates/singular`)
-                .tagBlock(`minecraft:mineable/${global.EE_STRATAS[s].tool}`)
-                .tagBlock(`c:mineable/paxel`)
-                .tagBlock(`minecraft:needs_${harvestLevel}_tool`)
+            builder.renderType('cutout')
+            .hardness(global.EE_STRATAS[s].resistance)
+            .soundType(SoundType.STONE)
+            .requiresTool(true)
+            .tagBoth('c:ores')
+            .tagBoth(`c:ores/${name}`)
+            .tagBoth(`c:ore_rates/singular`)
+            .tagBlock(`minecraft:mineable/${global.EE_STRATAS[s].tool}`)
+            .tagBlock(`c:mineable/paxel`)
+            .tagBlock(`minecraft:needs_${harvestLevel}_tool`)
         });
+
         createLootOre(name, s, drop);
     });
-}
+};
 
 /**
  * 
@@ -149,6 +138,9 @@ function registryOre(name, strata, harvestLevel, color, type, drop) {
  * @param {String[]} color Color array of materials. It can only have 5 colors, likes this: ['#393e46', '#2e2e2e', '#261e24', '#1f1721', '#1c1c1e']
  */
 function registryRaw(name, color) {
+    let layerNames = ['layer0', 'layer1', 'layer2', 'layer3', 'layer4'];
+    let texturePaths = layerNames.map((layer, index) => `${global.modid}:block/templates/raw_block/0${index}`);
+
     StartupEvents.registry('item', (event) => {
         let builder = event.create(`${global.modid}:raw_${name}`)
             .tag('c:raw_materials')
@@ -166,36 +158,15 @@ function registryRaw(name, color) {
 
         builder.modelGenerator((model) => {
             model.parent('minecraft:block/raw_iron_block')
-            model.texture(`layer0`, `${global.modid}:block/templates/raw_block/00`)
-            model.texture(`layer1`, `${global.modid}:block/templates/raw_block/01`)
-            model.texture(`layer2`, `${global.modid}:block/templates/raw_block/02`)
-            model.texture(`layer3`, `${global.modid}:block/templates/raw_block/03`)
-            model.texture(`layer4`, `${global.modid}:block/templates/raw_block/04`)
-            model.element((element) => {
-                element.allFaces((face_layer0) => {
-                    face_layer0.uv(0, 0, 16, 16).tex('layer0').tintindex(0)
+
+            layerNames.forEach((layer, index) => {
+                model.texture(layer, texturePaths[index]);
+                model.element((element) => {
+                    element.allFaces((face) => {
+                        face.uv(0, 0, 16, 16).tex(layer).tintindex(index);
+                    })
                 })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer1) => {
-                    face_layer1.uv(0, 0, 16, 16).tex('layer1').tintindex(1)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer2) => {
-                    face_layer2.uv(0, 0, 16, 16).tex('layer2').tintindex(2)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer3) => {
-                    face_layer3.uv(0, 0, 16, 16).tex('layer3').tintindex(3)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer4) => {
-                    face_layer4.uv(0, 0, 16, 16).tex('layer4').tintindex(4)
-                })
-            })
+            });
         })
 
         builder.renderType('cutout')
@@ -208,12 +179,12 @@ function registryRaw(name, color) {
             .resistance(3);
 
         if (color) {
-            for (let i = 0; i < color.length; i++) {
-                builder.color(i, color[i])
-                builder.item(item => {
-                    item.color(i, color[i])
-                })
-            }
+            color.forEach((colorValue, index) => {
+                builder.color(index, colorValue);
+                builder.item((item) => {
+                    item.color(index, colorValue);
+                });
+            });
         }
     });
 };
@@ -229,50 +200,32 @@ function registryRaw(name, color) {
  * @param {*} color
  */
 function registrySBlock(name, type, burnTime, color) {
+    let layerNames = ['layer0', 'layer1', 'layer2', 'layer3', 'layer4'];
+    let metalTexturePaths = layerNames.map((layer, index) => `${global.modid}:block/templates/block/metal/0${index}`);
+    let gemTexturePaths = layerNames.map((layer, index) => `${global.modid}:block/templates/block/gem/0${index}`);
+
     StartupEvents.registry('block', (event) => {
         let builder = event.create(`${global.modid}:${name}_block`);
 
         builder.modelGenerator((model) => {
             model.parent('minecraft:block/iron_block')
             if (type === 'metal' | type === 'alloy' | type === 'special') {
-                model.texture(`layer0`, `${global.modid}:block/templates/block/metal/00`)
-                model.texture(`layer1`, `${global.modid}:block/templates/block/metal/01`)
-                model.texture(`layer2`, `${global.modid}:block/templates/block/metal/02`)
-                model.texture(`layer3`, `${global.modid}:block/templates/block/metal/03`)
-                model.texture(`layer4`, `${global.modid}:block/templates/block/metal/04`)
+                layerNames.forEach((layer, index) => {
+                    model.texture(layer, metalTexturePaths[index]);
+                });
             } else if (type === 'gem') {
-                model.texture(`layer0`, `${global.modid}:block/templates/block/gem/00`)
-                model.texture(`layer1`, `${global.modid}:block/templates/block/gem/01`)
-                model.texture(`layer2`, `${global.modid}:block/templates/block/gem/02`)
-                model.texture(`layer3`, `${global.modid}:block/templates/block/gem/03`)
-                model.texture(`layer4`, `${global.modid}:block/templates/block/gem/04`)
+                layerNames.forEach((layer, index) => {
+                    model.texture(layer, gemTexturePaths[index]);
+                })
             }
 
-            model.element((element) => {
-                element.allFaces((face_layer0) => {
-                    face_layer0.uv(0, 0, 16, 16).tex('layer0').tintindex(0)
+            layerNames.forEach((layer, index) => {
+                model.element((element) => {
+                    element.allFaces((face) => {
+                        face.uv(0, 0, 16, 16).tex(layer).tintindex(index);
+                    })
                 })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer1) => {
-                    face_layer1.uv(0, 0, 16, 16).tex('layer1').tintindex(1)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer2) => {
-                    face_layer2.uv(0, 0, 16, 16).tex('layer2').tintindex(2)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer3) => {
-                    face_layer3.uv(0, 0, 16, 16).tex('layer3').tintindex(3)
-                })
-            })
-            model.element((element) => {
-                element.allFaces((face_layer4) => {
-                    face_layer4.uv(0, 0, 16, 16).tex('layer4').tintindex(4)
-                })
-            })
+            });
         })
 
         builder.renderType('cutout')
@@ -285,12 +238,12 @@ function registrySBlock(name, type, burnTime, color) {
             .resistance(3)
 
         if (color) {
-            for (let i = 0; i < color.length; i++) {
-                builder.color(i, color[i])
-                builder.item(item => {
-                    item.color(i, color[i])
-                })
-            }
+            color.forEach((colorValue, index) => {
+                builder.color(index, colorValue);
+                builder.item((item) => {
+                    item.color(index, colorValue);
+                });
+            });
         }
 
         if (burnTime) {
