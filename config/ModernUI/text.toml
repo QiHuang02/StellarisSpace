@@ -9,20 +9,25 @@
 	#Control base font size, in GUI scaled pixels. The default and vanilla value is 8.
 	#For bitmap fonts, 8 represents a glyph size of 8x or 16x if fixed resolution.
 	#This option only applies to TrueType fonts.
-	#Range: 6.5 ~ 9.5
+	# Default: 8.0
+	# Range: 6.5 ~ 9.5
 	baseFontSize = 8.0
 	#Control vertical baseline for vanilla text layout, in GUI scaled pixels.
 	#The vanilla default value is 7.
-	#Range: 4.0 ~ 10.0
+	# Default: 7.0
+	# Range: 4.0 ~ 10.0
 	baselineShift = 7.0
 	#Control the text shadow offset for vanilla text rendering, in GUI scaled pixels.
-	#Range: 0.20000000298023224 ~ 2.0
+	# Default: 0.67
+	# Range: 0.20000000298023224 ~ 2.0
 	shadowOffset = 0.67
 	#Control the text outline offset for vanilla text rendering, in GUI scaled pixels.
-	#Range: 0.20000000298023224 ~ 2.0
+	# Default: 0.5
+	# Range: 0.20000000298023224 ~ 2.0
 	outlineOffset = 0.5
 	#Set the recycle time of layout cache in seconds, using least recently used algorithm.
-	#Range: 2 ~ 15
+	# Default: 6
+	# Range: 2 ~ 15
 	cacheLifespan = 6
 	#The bidirectional text heuristic algorithm. The default is FirstStrong (Locale).
 	#This will affect which BiDi algorithm to use during text layout.
@@ -85,5 +90,6 @@
 	#Control the minimum pixel density for SDF text and text in 3D world rendering.
 	#This value will be no less than current GUI scale.
 	#Recommend setting a higher value on high-res monitor and powerful PC hardware.
-	#Range: 4 ~ 8
+	# Default: 4
+	# Range: 4 ~ 8
 	minPixelDensityForSDF = 4

@@ -2,7 +2,8 @@
 [developer]
 	#Whether to enable developer mode.
 	enableDeveloperMode = false
-	#Range: > -2147483648
+	# Default: 0
+	# Range: > -2147483648
 	oneTimeEvents = 0
 
 #Auto Shutdown Config

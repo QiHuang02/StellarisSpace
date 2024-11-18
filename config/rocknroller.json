@@ -3,6 +3,7 @@
     "carpetCtrlQCraftingEnabledOnServer": false,
     "clientCraftingFixOn1.12": true,
     "craftingRenderRecipeItems": true,
+    "debugMessages": false,
     "massCraftInhibitMidUpdates": true,
     "massCraftInterval": 2,
     "massCraftIterations": 36,
@@ -19,8 +20,40 @@
     "useRecipeCaching": true,
     "villagerTradeUseGlobalFavorites": true,
     "villagerTradeListRememberScrollPosition": true,
+    "sortInventoryToggle": false,
     "sortAssumeEmptyBoxStacks": true,
-    "sortShulkerBoxesAtEnd": true
+    "sortShulkerBoxesAtEnd": true,
+    "sortShulkerBoxesInverted": false,
+    "sortBundlesAtEnd": true,
+    "sortBundlesInverted": false,
+    "sortTopPriorityInventory": [
+      "minecraft:diamond_sword",
+      "minecraft:diamond_pickaxe",
+      "minecraft:diamond_axe",
+      "minecraft:diamond_shovel",
+      "minecraft:diamond_hoe",
+      "minecraft:netherite_sword",
+      "minecraft:netherite_pickaxe",
+      "minecraft:netherite_axe",
+      "minecraft:netherite_shovel",
+      "minecraft:netherite_hoe"
+    ],
+    "sortBottomPriorityInventory": [],
+    "sortMethodDefault": "category_name",
+    "sortCategoryOrder": [
+      "building_blocks",
+      "colored_blocks",
+      "natural_blocks",
+      "functional_blocks",
+      "redstone_blocks",
+      "tools_and_utilities",
+      "combat",
+      "food_and_drinks",
+      "ingredients",
+      "spawn_eggs",
+      "op_blocks",
+      "other"
+    ]
   },
   "Hotkeys": {
     "openConfigGui": {
