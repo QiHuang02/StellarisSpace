@@ -1,6 +1,6 @@
 // priority: 200
 
-global.EE_STRATAS = {
+let EE_STRATAS = {
     stone: {
         name: 'stone',
         texture: 'minecraft:block/stone',

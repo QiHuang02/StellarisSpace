@@ -6,10 +6,10 @@ let vanillaComplementStratas = ['netherrack', 'end_stone'];
 /**
  * @type {EEConfig[]}
  */
-global.EE_MATERIALS = [
+let EE_MATERIALS = {
     // Vanilla
     // Coal
-    {
+    coal: {
         name: 'coal',
         type: 'special',
         processedTypes: ['dust'],
@@ -17,7 +17,7 @@ global.EE_MATERIALS = [
         burnTime: 1600
     },
     // Iron
-    {
+    iron: {
         name: 'iron',
         type: 'metal',
         processedTypes: ['ore', 'dust', 'gear', 'plate', 'rod'],
@@ -31,7 +31,7 @@ global.EE_MATERIALS = [
         harvestLevel: 'stone'
     },
     // Copper
-    {
+    copper: {
         name: 'copper',
         type: 'metal',
         processedTypes: ['ore', 'dust', 'gear', 'plate', 'rod'],
@@ -45,7 +45,7 @@ global.EE_MATERIALS = [
         harvestLevel: 'stone'
     },
     // Gold
-    {
+    gold: {
         name: 'gold',
         type: 'metal',
         processedTypes: ['ore', 'dust', 'gear', 'plate', 'rod'],
@@ -59,14 +59,14 @@ global.EE_MATERIALS = [
         harvestLevel: 'iron'
     },
     // Netherite
-    {
+    netherite: {
         name: 'netherite',
         type: 'metal',
         processedTypes: ['nugget', 'dust', 'gear', 'plate', 'rod'],
         color: ['#737173', '#4d494d', '#443d3f', '#31292a', '#271c1d']
     },
     // Diamond
-    {
+    diamond: {
         name: 'diamond',
         type: 'gem',
         processedTypes: ['ore', 'dust', 'gear', 'plate', 'rod'],
@@ -80,7 +80,7 @@ global.EE_MATERIALS = [
         harvestLevel: 'iron'
     },
     // Emerald
-    {
+    emerald: {
         name: 'emerald',
         type: 'gem',
         processedTypes: ['ore', 'dust', 'gear', 'plate', 'rod'],
@@ -94,21 +94,21 @@ global.EE_MATERIALS = [
         harvestLevel: 'iron'
     },
     // Amethyst
-    {
+    amethyst: {
         name: 'amethyst',
         type: 'gem',
         processedTypes: ['dust', 'gear', 'plate', 'rod'],
         color: ['#fcfad2', '#fbc9e3', '#b18cf0', '#8b69ca', '#6e4ea9']
     },
     // Quartz
-    {
+    quartz: {
         name: 'quartz',
         type: 'gem',
         processedTypes: ['dust', 'gear', 'plate', 'rod'],
         color: ['#ffffff', '#eae5de', '#d4caba', '#b6a48e', '#897b73']
     },
     // Lapis
-    {
+    lapis: {
         name: 'lapis',
         type: 'gem',
         processedTypes: ['dust', 'gear'],
@@ -116,7 +116,7 @@ global.EE_MATERIALS = [
     },
     // Universal Modded Metals
     // Aluminum
-    {
+    aluminum: {
         name: 'aluminum',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic'],
@@ -131,7 +131,7 @@ global.EE_MATERIALS = [
         }
     },
     // Osmium
-    {
+    osmium: {
         name: 'osmium',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic'],
@@ -146,7 +146,7 @@ global.EE_MATERIALS = [
         }
     },
     // Lead
-    {
+    lead: {
         name: 'lead',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic'],
@@ -161,7 +161,7 @@ global.EE_MATERIALS = [
         }
     },
     // Nickel
-    {
+    nickel: {
         name: 'nickel',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'mekanism', 'bloodmagic'],
@@ -176,7 +176,7 @@ global.EE_MATERIALS = [
         }
     },
     // Silver
-    {
+    silver: {
         name: 'silver',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'mekanism', 'bloodmagic'],
@@ -191,7 +191,7 @@ global.EE_MATERIALS = [
         }
     },
     // Tin
-    {
+    tin: {
         name: 'tin',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic'],
@@ -206,7 +206,7 @@ global.EE_MATERIALS = [
         }
     },
     // Uranium
-    {
+    uranium: {
         name: 'uranium',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'bloodmagic'],
@@ -221,7 +221,7 @@ global.EE_MATERIALS = [
         }
     },
     // Zinc
-    {
+    zinc: {
         name: 'zinc',
         type: 'metal',
         processedTypes: ['ore', 'raw', 'ingot', 'nugget', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'mekanism', 'bloodmagic'],
@@ -237,7 +237,7 @@ global.EE_MATERIALS = [
     },
     // Universal Modded Gems
     // Sulfur
-    {
+    sulfur: {
         name: 'sulfur',
         type: 'gem',
         processedTypes: ['ore', 'gem', 'dust', 'storage_block'],
@@ -252,7 +252,7 @@ global.EE_MATERIALS = [
         gemTemplate: 8
     },
     // Niter
-    {
+    niter: {
         name: 'niter',
         type: 'gem',
         processedTypes: ['ore', 'gem', 'dust', 'storage_block'],
@@ -267,13 +267,22 @@ global.EE_MATERIALS = [
         gemTemplate: 8
     },
     // Fluorite
-    {
+    fluorite: {
         name: 'fluorite',
         type: 'gem',
         processedTypes: ['ore', 'gem', 'dust', 'storage_block'],
         harvestLevel: 'stone',
         strata: commonStratas,
-        color: [],
+        texture: {
+            item: {
+                gem: 'item/fluorite_gem',
+                dust: 'item/fluorite_dust'
+            },
+            block: {
+                parent: 'minecraft:block/iron_block',
+                storage_block: 'block/fluorite_block'
+            }
+        },
         drop: {
             item: 'emendatusenigmatica:fluorite_gem',
             min: 2,
@@ -281,7 +290,7 @@ global.EE_MATERIALS = [
         }
     },
     // Ruby
-    {
+    ruby: {
         name: 'ruby',
         type: 'gem',
         baseItem: 'gem',
@@ -290,7 +299,7 @@ global.EE_MATERIALS = [
         gemTemplate: 1
     },
     // Sapphire
-    {
+    sapphire: {
         name: 'sapphire',
         type: 'gem',
         baseItem: 'gem',
@@ -300,21 +309,21 @@ global.EE_MATERIALS = [
     },
     // Misc
     // Wood
-    {
+    wood: {
         name: 'wood',
         type: 'special',
         processedTypes: ['dust', 'storage_block'],
         color: ['#b8945f', '#987849', '#745a36', '#5f4a2b', '#4c3d26']
     },
     // Ender Pearl
-    {
+    ender_pearl: {
         name: 'ender_pearl',
         type: 'special',
         processedTypes: ['dust', 'storage_block'],
         color: ['#8cf4e2', '#349988', '#0c3730', '#0b4d42', '#063931']
     },
     // Coal Coke
-    {
+    coal_coke: {
         name: 'coal_coke',
         type: 'special',
         processedTypes: ['gem', 'dust', 'storage_block'],
@@ -323,108 +332,92 @@ global.EE_MATERIALS = [
             item: {
                 gem: 'item/coal_coke_gem',
             },
-            block: 'block/coal_coke_block'
+            block: {
+                parent: 'minecraft:block/sand',
+                storage_block: 'block/coal_coke_block'
+            }
         },
         burnTime: 3200
     },
+    // Silicon
+    silicon: {
+        name: 'silicon',
+        type: 'special',
+        processedTypes: ['gem'],
+        texture: {
+            item: {
+                gem: 'item/silicon_gem'
+            }
+        }
+    },
     // Alloys
     // Electrum
-    {
+    electrum: {
         name: 'electrum',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#f4f7eb', '#eded91', '#e5b840', '#a85d1b', '#8c3a0e']
     },
     // Invar
-    {
+    invar: {
         name: 'invar',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#ffffff', '#b8c4bf', '#8d9f96', '#5b7669', '#495e57']
     },
     // Constantan
-    {
+    constantan: {
         name: 'constantan',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#f0e8d8', '#e5c09e', '#d8876b', '#943a38', '#781e24']
     },
     // Bronze
-    {
+    bronze: {
         name: 'bronze',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#ebe9be', '#ebd288', '#d38c53', '#ba5b2f', '#9c3a27']
     },
     // Signalum
-    {
+    signalum: {
         name: 'signalum',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#ffe4c9', '#fc8638', '#e55c17', '#993d0f', '#82260d']
     },
     // Lumium
-    {
+    lumium: {
         name: 'lumium',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#fdfff7', '#e5f3b5', '#dcd56b', '#bf8c39', '#a87132']
     },
     // Enderium
-    {
+    enderium: {
         name: 'enderium',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#5de8cc', '#289799', '#1c5961', '#0b2e47', '#0f1e36']
     },
     // Brass
-    {
+    brass: {
         name: 'brass',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#dfedcc', '#c7d477', '#b5a642', '#8c6322', '#6b3c0d']
     },
     // Steel
-    {
+    steel: {
         name: 'steel',
         type: 'alloy',
         processedTypes: ['dust', 'gear', 'ingot', 'nugget', 'plate', 'rod', 'storage_block'],
         color: ['#e4e6eb', '#9ea0a3', '#818185', '#454552', '#31313b']
     },
-    // Mod: Occultism
-    // {
-    //     name: 'iesnium',
-    //     type: 'metal',
-    //     processedTypes: ['ingot', 'dust', 'plate', 'gear', 'rod', 'storage_block', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#b7e8e6', '#64b0bf', '#38748b', '#2c526b', '#233b56']
-    // },
-    // Mod: Blue Skies
-    // {
-    //     name: 'falsite',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'plate', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#9892ed', '#7561e2', '#751ed5', '#57148f', '#321178']
-    // },
-    // {
-    //     name: 'ventium',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'plate', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#e1626b', '#d93737', '#b52020', '#7b1f16', '#651212']
-    // },
-    // {
-    //     name: 'horizonite',
-    //     type: 'metal',
-    //     processedTypes: ['dust', 'plate', 'gear', 'rod', 'mekanism', 'bloodmagic', 'crushed'],
-    //     color: ['#fcbe6c', '#fcab39', '#fc6d28', '#ae2d15', '#9c3100']
-    // },
-];
+};
 
-global.EE_MATERIALS.forEach(
-    /**
-     * 
-     * @param {EEConfig} material 
-     */
-    material => {
+Object.entries(EE_MATERIALS).forEach(
+    ([key, material]) => {
         new EmendatusEnigmaticaJS(material).registry();
     }
 );

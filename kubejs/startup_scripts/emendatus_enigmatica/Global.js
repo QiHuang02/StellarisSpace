@@ -84,7 +84,7 @@ const OreLootJson = (block, item, sequence, min, max) => ({
     "random_sequence": sequence
 });
 
-function createLootOre(name, strata, drop) {
+function createLootOreJson(name, strata, drop) {
     let loot = JsonIO.read(`${paths.loots.block}${name}_ore_${strata}.json`) || {};
     if (loot.type === undefined) {
         console.log(`No block loot table found, creating new: ${name}_ore_${strata}.json`);
