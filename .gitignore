@@ -2,6 +2,7 @@
 .probe
 .vscode
 coremods
+crash-reports
 downloads
 fancymenu_data
 kubejs/config/client.json
@@ -20,3 +21,10 @@ patchouli_data.json
 realms_persistence.json
 user*.json
 command_history.txt
+emi.json
+hs_err_pid*
+options.txt
+rocknroller/recipes_testworld.nbt
+*.bak
+*.disable
+rocknroller/recipes_1111.nbt
