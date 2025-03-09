@@ -1,0 +1,22 @@
+{
+  "favorites": [],
+  "lookup_history": [],
+  "craft_history": [],
+  "recipe_defaults": {
+    "added": [],
+    "tags": {},
+    "resolutions": {},
+    "disabled": []
+  },
+  "hidden_stacks": [
+    "item:actuallyadditions:stone_aiot",
+    "item:actuallyadditions:iron_aiot",
+    "item:actuallyadditions:gold_aiot",
+    "item:actuallyadditions:diamond_aiot",
+    "item:actuallyadditions:netherite_aiot",
+    "item:actuallyadditions:wooden_aiot",
+    "item:ironfurnaces:upgrade_iron",
+    "item:ironfurnaces:upgrade_gold",
+    "item:ironfurnaces:upgrade_silver"
+  ]
+}

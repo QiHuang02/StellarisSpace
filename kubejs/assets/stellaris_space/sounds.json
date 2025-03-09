@@ -1,0 +1,18 @@
+{
+    "love_story": {
+        "sounds": [
+            {
+                "name": "stellaris_space:love_story",
+                "stream": true
+            }
+        ]
+    },
+    "never_gonna_give_you_up": {
+        "sounds": [
+            {
+                "name": "stellaris_space:never_gonna_give_you_up",
+                "stream": true
+            }
+        ]
+    }
+}
