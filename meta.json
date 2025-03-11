@@ -2,6 +2,9 @@
     "schemaVersion": 1,
     "hotfixesFormat": null,
     "versions": [
-   
+        {
+            "id": "0.1.1",
+            "releasedAt": "1741697931"
+        }
     ]
   }
