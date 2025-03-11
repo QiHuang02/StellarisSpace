@@ -1,0 +1,47 @@
+{
+	id: "1570FC68BA99C313"
+	loot_size: 1
+	order_index: 0
+	rewards: [
+		{
+			command: "/ae2 channelmode default"
+			icon: {
+				id: "ae2:controller"
+			}
+			id: "77DA02153F7196C1"
+			type: "command"
+		}
+		{
+			command: "/ae2 channelmode x2"
+			icon: {
+				id: "ae2:controller"
+			}
+			id: "41F7871A1ECC40B5"
+			type: "command"
+		}
+		{
+			command: "/ae2 channelmode x3"
+			icon: {
+				id: "ae2:controller"
+			}
+			id: "070151094DF201AA"
+			type: "command"
+		}
+		{
+			command: "/ae2 channelmode x4"
+			icon: {
+				id: "ae2:controller"
+			}
+			id: "49CA130C16F5ED41"
+			type: "command"
+		}
+		{
+			command: "/ae2 channelmode infinite"
+			icon: {
+				id: "ae2:controller"
+			}
+			id: "54DF624D1F4EFAD6"
+			type: "command"
+		}
+	]
+}
