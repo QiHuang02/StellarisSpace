@@ -1,5 +1,6 @@
 
 mods/
+disabledmods/
 PCL/
 StellarisSpace.*
 *.bak
@@ -20,3 +21,7 @@ saves/
 .vscode/
 
 crash-reports/
+resourcepacks/
+config/emendatusenigmatica/default/
+config/emendatusenigmatica/default/data
+kubejs/config/
