@@ -1,10 +1,10 @@
 {
   "schemaVersion": 9,
-  "currentVersion": "0.1.0",
+  "currentVersion": "0.1.1",
   "modpackName": "StellarisSpace",
   "modpackAuthor": "QiHuang02",
   "modpackReleaseType": "alpha",
-  "updateCheckerId": "https://raw.githubusercontent.com/Modpack-Update-Checker/example-update-checker/main/",
+  "updateCheckerId": "https://raw.githubusercontent.com/QiHuang02/StellarisSpace/refs/heads/checker/",
   "advanced": {
     "bccEnabled": false,
     "expandButton": false,

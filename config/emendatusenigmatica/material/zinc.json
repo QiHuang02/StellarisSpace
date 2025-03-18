@@ -1,0 +1,42 @@
+{
+    "id": "zinc",
+    "source": "modded",
+    "localizedName": "Zinc",
+    "processedTypes": [
+      "ore",
+      "storage_block",
+      "ingot",
+      "nugget",
+      "raw",
+      "dust",
+      "plate",
+      "gear",
+      "rod",
+      "fluid",
+      "slurry",
+      "crystal",
+      "shard",
+      "clump",
+      "dirty_dust",
+      "crushed_ore"
+    ],
+    "properties": {
+      "materialType": "metal",
+      "harvestLevel": 2,
+      "isEmissive": true
+    },
+    "oreDrop": {
+      "drop": "emendatusenigmatica:raw_zinc",
+      "min": 1,
+      "max": 1
+    },
+    "colors": {
+      "fluidColor": "9ca67b",
+      "materialColor": "9ca67b"
+    },
+    "compat": {
+      "create": true,
+      "occultism": false,
+      "mekanism": true
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "id": "signalum",
+    "source": "modded",
+    "localizedName": "Signalum",
+    "processedTypes": [
+      "storage_block",
+      "ingot",
+      "nugget",
+      "dust",
+      "plate",
+      "gear",
+      "rod",
+      "fluid",
+      "slurry",
+      "crystal",
+      "shard",
+      "clump",
+      "dirty_dust",
+      "crushed_ore"
+    ],
+    "properties": {
+      "materialType": "alloy",
+      "harvestLevel": 2
+    },
+    "colors": {
+      "fluidColor": "e55c17",
+      "materialColor": "e55c17"
+    },
+    "compat": {
+      "create": false,
+      "occultism": true,
+      "mekanism": true
+    }
+}

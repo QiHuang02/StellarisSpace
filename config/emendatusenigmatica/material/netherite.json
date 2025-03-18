@@ -1,0 +1,19 @@
+{
+    "id": "netherite",
+    "source": "vanilla",
+    "localizedName": "Netherite",
+    "disableDefaultOre": true,
+    "processedTypes": [
+      "nugget",
+      "dust",
+      "plate",
+      "gear",
+      "rod"
+    ],
+    "properties": {
+      "materialType": "alloy"
+    },
+    "colors": {
+      "materialColor": "443d3f"
+    }
+}

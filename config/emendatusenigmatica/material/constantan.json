@@ -1,0 +1,34 @@
+{
+    "id": "constantan",
+    "source": "modded",
+    "localizedName": "Constantan",
+    "processedTypes": [
+      "storage_block",
+      "ingot",
+      "nugget",
+      "dust",
+      "plate",
+      "gear",
+      "rod",
+      "fluid",
+      "slurry",
+      "crystal",
+      "shard",
+      "clump",
+      "dirty_dust",
+      "crushed_ore"
+    ],
+    "properties": {
+      "materialType": "alloy",
+      "harvestLevel": 2
+    },
+    "colors": {
+      "fluidColor": "d8876b",
+      "materialColor": "d8876b"
+    },
+    "compat": {
+      "create": false,
+      "occultism": true,
+      "mekanism": true
+    }
+}

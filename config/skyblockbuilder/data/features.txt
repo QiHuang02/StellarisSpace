@@ -2,9 +2,6 @@ actuallyadditions:canola_patch
 actuallyadditions:coffee_patch
 actuallyadditions:flax_patch
 actuallyadditions:ore_black_quartz
-create:striated_ores_nether
-create:striated_ores_overworld
-create:zinc_ore
 mekanism:ore_fluorite_buried
 mekanism:ore_fluorite_buried_retrogen
 mekanism:ore_fluorite_normal

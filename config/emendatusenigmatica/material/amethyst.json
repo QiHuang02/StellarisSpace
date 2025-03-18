@@ -1,0 +1,18 @@
+{
+    "id": "amethyst",
+    "source": "vanilla",
+    "localizedName": "Amethyst",
+    "disableDefaultOre": true,
+    "processedTypes": [
+      "dust",
+      "plate",
+      "gear",
+      "rod"
+    ],
+    "properties": {
+      "materialType": "gem"
+    },
+    "colors": {
+      "materialColor": "6e4ea9"
+    }
+}

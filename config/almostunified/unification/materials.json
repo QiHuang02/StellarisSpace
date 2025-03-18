@@ -12,7 +12,8 @@
     "deepslate",
     "diorite",
     "granite",
-    "nether"
+    "nether",
+    "end_stone"
   ],
   "tags": [
     "c:dusts/{material}",
